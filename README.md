@@ -1,57 +1,97 @@
-# 🚀 Getting started with Strapi
+# Brief - My personal dj
 
-Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/dev-docs/cli) (CLI) which lets you scaffold and manage your project in seconds.
+## Description
 
-### `develop`
+Ce projet possède deux parties à développer en parallèle :
+- un backend en utilisant strapi
+- un frontend en utilisant react (avec vite)
 
-Start your Strapi application with autoReload enabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-develop)
+## Installation
 
+Créer une application strapiJS
+```bash
+npx create-strapi-app dj-backend --quickstart
 ```
+
+Créer une application react
+```bash
+npm init vite@latest dj-frontend -- --template react-ts
+```
+
+## Utilisation
+
+Lancez strapi
+```bash
+cd dj-backend
 npm run develop
-# or
-yarn develop
 ```
 
-### `start`
-
-Start your Strapi application with autoReload disabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-start)
-
-```
-npm run start
-# or
-yarn start
+Lancez react
+```bash
+cd dj-frontend
+npm run dev
 ```
 
-### `build`
+Créez un utilisateur admin sur strapi
+Pour cela, créer un compte sur http://localhost:1337/admin
 
-Build your admin panel. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-build)
+## Chanteurs
 
+Créer un nouveau type de contenu "Chanteur" avec les champs suivants :
+- Nom (texte)
+- Prénom (texte)
+- Date de naissance (date)
+
+Créer un nouveau chanteur :
+- Nom : "Lama"
+- Prénom : "Serge"
+- Date de naissance : "1943-02-11"
+
+Créer un nouveau type de contenu "Musique" avec les champs suivants :
+- Titre (texte)
+- lien youtube (texte)
+- Chanteur (relation vers le type de contenu "Chanteur")
+- Favoris (booléen)
+- Date de sortie (date)
+- couleur de fond (couleur)
+
+Créer une nouvelle musique :
+- Titre : "Je suis malade"
+- lien youtube : "https://www.youtube.com/watch?v=Q3Kvu6Kgp88"
+- Chanteur : "Serge Lama"
+- Favoris : "true"
+- Date de sortie : "1973-01-01"
+- couleur de fond : "#134522"
+
+## Test de l'api
+
+Utilisez Rest Client pour tester l'api, avec un nouveau fichier "requests.http" dans le projet client contenant les requêtes suivantes :
+
+```bash
+GET http://localhost:1337/api/chanteurs
+GET http://localhost:1337/api/musiques
 ```
-npm run build
-# or
-yarn build
-```
 
-## ⚙️ Deployment
+(Attention vous aurez besoin de gérer les droits de strapi pour accéder à ces données)
 
-Strapi gives you many possible deployment options for your project including [Strapi Cloud](https://cloud.strapi.io). Browse the [deployment section of the documentation](https://docs.strapi.io/dev-docs/deployment) to find the best solution for your use case.
+Puis ajoutez un nouvel artiste et une nouvelle musique via Rest Client
+Notez les requêtes à taper dans le fichier "requests.http" pour ajouter un nouvel artiste et une nouvelle musique
 
-## 📚 Learn more
+## Affichage des données
 
-- [Resource center](https://strapi.io/resource-center) - Strapi resource center.
-- [Strapi documentation](https://docs.strapi.io) - Official Strapi documentation.
-- [Strapi tutorials](https://strapi.io/tutorials) - List of tutorials made by the core team and the community.
-- [Strapi blog](https://strapi.io/blog) - Official Strapi blog containing articles made by the Strapi team and the community.
-- [Changelog](https://strapi.io/changelog) - Find out about the Strapi product updates, new features and general improvements.
+Créer un nouvel utilisateur dans strapi.
+Créer une interface de connexion dans le projet client.
+Utiliser la route d'authentification de strapi pour se connecter.
 
-Feel free to check out the [Strapi GitHub repository](https://github.com/strapi/strapi). Your feedback and contributions are welcome!
+Une fois connecté, afficher la liste des musiques dans le projet client.
+Afficher les musiques favorites en premier.
+Afficher les musiques par ordre alphabétique dans une deuxième partie.
+Vous pouvez vous aider de la maquette (laide) fournie dans le brief.
 
-## ✨ Community
+Créer une page d'ajout de musique, accessible en cliquant sur le lien "+" en haut à droite de la page d'accueil.
 
-- [Discord](https://discord.strapi.io) - Come chat with the Strapi community including the core team.
-- [Forum](https://forum.strapi.io/) - Place to discuss, ask questions and find answers, show your Strapi project and get feedback or just talk with other Community members.
-- [Awesome Strapi](https://github.com/strapi/awesome-strapi) - A curated list of awesome things related to Strapi.
+Créer une page modifier une musique, accessible en cliquant sur une musique dans la liste des musiques.
 
----
+## Et après ?
 
-<sub>🤫 Psst! [Strapi is hiring](https://strapi.io/careers).</sub>
+Appellez votre formateur pour lui montrer votre projet, il vous ajoutera de nouvelles fonctionnalités à implémenter.
